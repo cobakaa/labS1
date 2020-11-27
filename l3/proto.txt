@@ -1,0 +1,53 @@
+stud@alice12:~$ ping 45.141.101.145
+PING 45.141.101.145 (45.141.101.145) 56(84) bytes of data.
+64 bytes from 45.141.101.145: icmp_seq=1 ttl=58 time=3.11 ms
+64 bytes from 45.141.101.145: icmp_seq=2 ttl=58 time=2.92 ms
+^C
+--- 45.141.101.145 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 2.920/3.017/3.114/0.097 ms
+stud@alice12:~$ ssh user_112_3@45.141.101.145
+user_112_3@45.141.101.145's password: 
+Welcome to Ubuntu 16.04.1 LTS (GNU/Linux 4.4.0-34-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+125 packages can be updated.
+1 update is a security update.
+
+New release '18.04.5 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+
+*** System restart required ***
+user_112_3@workshop:~$ ls
+cat
+user_112_3@workshop:~$ cd cat
+user_112_3@workshop:~/cat$ ls
+403.jpg
+user_112_3@workshop:~/cat$ exit
+logout
+Connection to 45.141.101.145 closed.
+stud@alice12:~$ scp user_112_3@45.141.101.145:cat/403.jpg kyastakov/
+user_112_3@45.141.101.145's password: 
+403.jpg                                       100%   27KB   1.1MB/s   00:00    
+stud@alice12:~$ cd kyastakov/
+stud@alice12:~/kyastakov$ ls
+403.jpg  l2  protoc  protoc~
+stud@alice12:~/kyastakov$ mkdir l3
+stud@alice12:~/kyastakov$ mv 403.jpg l
+l2/ l3/ 
+stud@alice12:~/kyastakov$ mv 403.jpg l3
+stud@alice12:~/kyastakov$ cd l3
+stud@alice12:~/kyastakov/l3$ ls
+403.jpg
+stud@alice12:~/kyastakov/l3$ tar -zcf pic.tar.gz 403.jpg 
+stud@alice12:~/kyastakov/l3$ ls
+403.jpg  pic.tar.gz
+stud@alice12:~/kyastakov/l3$ rm 403.jpg 
+stud@alice12:~/kyastakov/l3$ gzip -c -d pic.tar.gz | tar -xf -
+stud@alice12:~/kyastakov/l3$ ls
+403.jpg  pic.tar.gz
+

@@ -1,0 +1,3 @@
+#!/bin/sh 
+sudo service dbus restart 
+XDG_SESSION_TYPE=x11 gnome-session 

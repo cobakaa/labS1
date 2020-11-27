@@ -1,0 +1,227 @@
+stud@alice12:~/kyastakov$ ls -alF .. | tail
+drwxr-xr-x  4 stud stud   4096 ноя 26  2018 Документы/
+drwxr-xr-x  4 stud stud   4096 окт 15  2019 Загрузки/
+drwxr-xr-x  2 stud stud   4096 сен  8 15:07 Изображения/
+drwxr-xr-x  5 stud stud   4096 дек  3  2019 лабы/
+drwxr-xr-x  2 stud stud   4096 авг 28  2014 Музыка/
+drwxr-xr-x  2 stud stud   4096 авг 28  2014 Общедоступные/
+drwxr-xr-x 18 stud stud   4096 дек 23  2019 Рабочий стол/
+-rw-rw-r--  1 stud stud  25410 сен 15  2014 Скрипт.odt
+-rw-rw-r--  1 stud stud  19968 окт 13  2014 скриптлаб3.doc
+drwxr-xr-x  2 stud stud   4096 ноя 19  2019 Шаблоны/
+stud@alice12:~/kyastakov$ ps
+  PID TTY          TIME CMD
+ 3754 pts/1    00:00:00 bash
+ 5607 pts/1    00:00:00 ps
+stud@alice12:~/kyastakov$ who
+stud     :1           2020-09-08 13:21 (:1)
+stud@alice12:~/kyastakov$ whoami
+stud
+stud@alice12:~/kyastakov$ tty
+/dev/pts/0
+stud@alice12:~/kyastakov$ hostname
+alice12
+stud@alice12:~/kyastakov$ uname -a
+Linux alice12 4.15.0-112-generic #113-Ubuntu SMP Thu Jul 9 23:41:39 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
+stud@alice12:~/kyastakov$ man uname
+stud@alice12:~/kyastakov$ pwd
+/home/stud/kyastakov
+stud@alice12:~/kyastakov$ who
+stud     :1           2020-09-08 13:21 (:1)
+stud@alice12:~/kyastakov$ rwho
+stud     alice10::1 Sep  8 14:26
+stud     alice11::1 Sep  8 13:22
+stud     alice12::1 Sep  8 13:21
+stud     alice19::1 Sep  8 13:22
+stud     alice2::1  Sep  8 13:22
+stud     alice20::1 Sep  8 13:21
+stud     alice21::1 Sep  8 13:21
+stud     alice22::1 Sep  8 13:21
+stud     alice23::1 Sep  8 13:21
+stud     alice24::1 Sep  8 13:24
+stud     alice3::1  Sep  8 13:22
+stud     alice8::1  Sep  8 13:21
+stud     alice9::1  Sep  8 13:21
+stud     alisa::0   Sep  8 12:50
+stud@alice12:~/kyastakov$ cd /
+stud@alice12:/$ ls
+bin    etc             lib     lost+found  proc  snap  usr
+boot   home            lib32   media       root  srv   var
+cdrom  initrd.img      lib64   mnt         run   sys   vmlinuz
+dev    initrd.img.old  libx32  opt         sbin  tmp   vmlinuz.old
+stud@alice12:/$ cd -
+/home/stud/kyastakov
+stud@alice12:~/kyastakov$ ls
+proto  protoc.sh
+stud@alice12:~/kyastakov$ rm protoc.sh 
+stud@alice12:~/kyastakov$ ls
+proto
+stud@alice12:~/kyastakov$ cat > f1.txt
+asd sad 
+asd asd
+asd
+stud@alice12:~/kyastakov$ cat f1.txt 
+asd sad 
+asd asd
+asd
+stud@alice12:~/kyastakov$ cp f1.txt f2.txt
+stud@alice12:~/kyastakov$ ls
+f1.txt  f2.txt  proto
+stud@alice12:~/kyastakov$ cat f2.txt 
+asd sad 
+asd asd
+asd
+stud@alice12:~/kyastakov$ cat f1.txt f2.txt f3.txt
+asd sad 
+asd asd
+asd
+asd sad 
+asd asd
+asd
+cat: f3.txt: Нет такого файла или каталога
+stud@alice12:~/kyastakov$ cat f1.txt f2.txt > f3.txt
+stud@alice12:~/kyastakov$ ls
+f1.txt  f2.txt  f3.txt  proto
+stud@alice12:~/kyastakov$ cat f3.txt 
+asd sad 
+asd asd
+asd
+asd sad 
+asd asd
+asd
+stud@alice12:~/kyastakov$ rm f2.txt f3.txt 
+stud@alice12:~/kyastakov$ ls
+f1.txt  proto
+stud@alice12:~/kyastakov$ mkdir lab course
+stud@alice12:~/kyastakov$ ls
+course  f1.txt  lab  proto
+stud@alice12:~/kyastakov$ cp f1.txt course/
+stud@alice12:~/kyastakov$ cp f1.txt lab/
+stud@alice12:~/kyastakov$ ls
+course  f1.txt  lab  proto
+stud@alice12:~/kyastakov$ rm f1.txt 
+stud@alice12:~/kyastakov$ ls
+course  lab  proto
+stud@alice12:~/kyastakov$ cd lab/
+stud@alice12:~/kyastakov/lab$ ls
+f1.txt
+stud@alice12:~/kyastakov/lab$ cd ../course/
+stud@alice12:~/kyastakov/course$ ls
+f1.txt
+stud@alice12:~/kyastakov/course$ cd ..
+stud@alice12:~/kyastakov$ rmdir lab/
+rmdir: не удалось удалить 'lab/': Каталог не пуст
+stud@alice12:~/kyastakov$ rmdir -p lab/
+rmdir: не удалось удалить 'lab/': Каталог не пуст
+stud@alice12:~/kyastakov$ man rmdir
+stud@alice12:~/kyastakov$ rm -rf lab course/
+stud@alice12:~/kyastakov$ ls
+proto
+stud@alice12:~/kyastakov$ gnuplot
+
+	G N U P L O T
+	Version 5.2 patchlevel 2    last modified 2017-11-01 
+
+	Copyright (C) 1986-1993, 1998, 2004, 2007-2017
+	Thomas Williams, Colin Kelley and many others
+
+	gnuplot home:     http://www.gnuplot.info
+	faq, bugs, etc:   type "help FAQ"
+	immediate help:   type "help"  (plot window: hit 'h')
+
+Terminal type is now 'wxt'
+gnuplot> set term dumb
+
+Terminal type is now 'dumb'
+Options are 'feed  size 79, 24 aspect 2, 1 mono'
+gnuplot> plot x
+
+                                                                               
+  10 +---------------------------------------------------------------------+   
+     |                 +                +                 +           **** |   
+     |                                                           x ******* |   
+     |                                                         ****        |   
+     |                                                     ****            |   
+   5 |-+                                                ****             +-|   
+     |                                              ****                   |   
+     |                                           ****                      |   
+     |                                       ****                          |   
+     |                                    ****                             |   
+   0 |-+                               ***                               +-|   
+     |                             ****                                    |   
+     |                          ****                                       |   
+     |                      ****                                           |   
+     |                   ****                                              |   
+  -5 |-+             ****                                                +-|   
+     |            ****                                                     |   
+     |        ****                                                         |   
+     |     ***                                                             |   
+     | ****            +                +                 +                |   
+ -10 +---------------------------------------------------------------------+   
+    -10               -5                0                 5               10                                                                       
+gnuplot> exit
+stud@alice12:~/kyastakov$ ls -la .. | head
+итого 1800
+drwxr-xr-x 70 stud stud  12288 сен  8 16:01 .
+drwxr-xr-x  5 root root   4096 авг 28  2014 ..
+-rw-rw-r--  1 stud stud      0 окт 29  2018 $}
+-rw-rw-r--  1 stud stud    213 ноя  2  2018 02.11Acpp
+-rw-r--r--  1 stud stud  12288 ноя  9  2018 .09.11B.cpp.swo
+-rw-rw-r--  1 stud stud    364 ноя  8  2014 10.c~
+-rwxrwxr-x  1 stud stud   8568 янв 12  2015 10_code
+-rw-rw-r--  1 stud stud    153 янв 12  2015 10_code.c
+-rwxrwxr-x  1 stud stud   8568 янв 12  2015 10_code.out
+
+stud@alice12:~/kyastakov$ ls
+protoc
+stud@alice12:~/kyastakov$ touch a1 asd a5asd
+stud@alice12:~/kyastakov$ ls
+a1  a5asd  asd  protoc
+stud@alice12:~/kyastakov$ rm a*
+stud@alice12:~/kyastakov$ ls
+protoc
+stud@alice12:~/kyastakov$ touch a1s a2s asd
+stud@alice12:~/kyastakov$ ls
+a1s  a2s  asd  protoc
+stud@alice12:~/kyastakov$ rm a?s
+stud@alice12:~/kyastakov$ ls
+asd  protoc
+stud@alice12:~/kyastakov$ mkdir lab
+stud@alice12:~/kyastakov$ mv asd lab/
+stud@alice12:~/kyastakov$ ls lab/
+asd
+stud@alice12:~/kyastakov$ mv lab/asd lab/mvasd
+stud@alice12:~/kyastakov$ ls lab/
+mvasd
+stud@alice12:~/kyastakov$ rm -rf lab/
+stud@alice12:~/kyastakov$ ls
+protoc
+stud@alice12:~/kyastakov$ bc
+bc 1.07.1
+Copyright 1991-1994, 1997, 1998, 2000, 2004, 2006, 2008, 2012-2017 Free Software Foundation, Inc.
+This is free software with ABSOLUTELY NO WARRANTY.
+For details type `warranty'.
+2+6
+8
+a=125 + 5
+b=30
+a+b
+160
+a/b
+4
+obase=16
+12
+C
+ibase=2
+11111111
+FF
+obase=1010
+ibase=1010
+12
+12
+scale=4
+a/b
+4.3333
+sqrt(9)
+3.0000
+quit
