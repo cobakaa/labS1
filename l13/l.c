@@ -3,96 +3,17 @@
 #include <stdbool.h>
 #include <inttypes.h>
 
-#define VOWELS (1u << ('a' - 'a') | 1u << ('e' - 'a') | 1u << ('i' - 'a') | 1u << ('u' - 'a') | 1u << ('o' - 'a'))
-#define SPACE (1u << 26 | 1u << 27 | 1u << 28 | 1u << 29)
-#define CONSONANTS (~(1u << 30 | 1u << 31 | VOWELS | SPACE))
-
-uint32_t char_to_set(char c)
-{
-    c = tolower(c);
-    if (c <= 'z' && c >= 'a') {
-        return 1u << (c - 'a');
-    } else {
-        switch (c) {
-            case ' ':
-                return 1u << 26;
-            case '\t':
-                return 1u << 27;
-            case ',':
-                return 1u << 28;
-            case '\n':
-                return 1u << 29;
-            default:
-                return 1u << 30;
-        }
+uint32_t f(uint32_t x)  // 110101 -> 001010 ~x & y  
+{ 
+    int n = 0;
+    while((x | (1u << n)) == x) {
+        n++;
     }
+    return ~(1u << n);
 }
 
-uint32_t set_union(uint32_t lset, uint32_t rset)
+int main()
 {
-    return lset | rset;
-}
-
-uint32_t set_clear(void)
-{
-    return 0;
-}
-
-uint32_t set_intersectoin(uint32_t lset, uint32_t rset)
-{
-    return lset & rset;
-}
-
-bool set_in(uint32_t lset, uint32_t rset)
-{
-    return set_union(lset, rset) == rset;
-}
-
-bool set_not_in(uint32_t lset, uint32_t rset)
-{
-    return set_intersectoin(lset, rset) == 0;
-}
-
-void set_to_char(uint32_t s)
-{
-    for (int i = 0; i < 26; ++i) {
-        if (set_in((1u << i), s)) {
-            printf("%c ", 'a' + i);
-        }
-    }
-    printf("\n");
-}
-
-uint32_t set_insert(uint32_t lset, uint32_t rset)
-{
-    return lset & ~rset;
-}
-
-bool is_empty(uint32_t set)
-{
-    return set == 0;
-}
-
-int main(void)
-{
-    uint32_t lword = set_clear(), rword = set_clear();
-    char c;
-    bool result = false;
-    while ((c = getchar()) != EOF) {
-        uint32_t cset = char_to_set(c);
-        if (set_in(cset, SPACE) && !set_in(rword, SPACE)) {
-            if (set_intersectoin(lword, VOWELS) == set_intersectoin(rword, VOWELS) && !is_empty(set_intersectoin(rword, VOWELS))) {
-                result = true;
-            }
-            lword = rword;
-            rword = set_clear();
-        } else {
-            rword = set_union(rword, cset);
-        }
-    }
-    if (set_intersectoin(lword, VOWELS) == set_intersectoin(rword, VOWELS) && !is_empty(set_intersectoin(rword, VOWELS))) {
-        result = true;
-    }
-    printf(result ? "Yes\n" : "No\n");
+    printf("%d\n", f(53));
     return 0;
 }
