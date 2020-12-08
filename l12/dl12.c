@@ -3,6 +3,7 @@ void bin(unsigned n, int l, int y)
 {
     unsigned i;
     int x;
+
     for (i = 1 << (l - 1); i > 0; i = i / 2)
     {
         x = y;
@@ -17,19 +18,16 @@ void bin(unsigned n, int l, int y)
         }
         (n & i) ? printf("1") : printf("0");
     }
-    printf("\n");
 }
 
 int main(void)
 {
-    int a, a1, a2, kd, k, k1, d;
+    int a, a0, a1, a2, kd, k, k1;
+    long long int d;
 
     while (scanf("%d", &a) == 1)
     {
-        if (a == 0)
-        {
-            printf("0000000000");
-        }
+        a0 = a;
         if (a > 0)
         {
             k = 0;
@@ -49,6 +47,7 @@ int main(void)
                 kd = kd + 1;
             }
             bin(a2, kd, k1);
+            printf("\n");
         }
 
         if (a < 0)
@@ -72,6 +71,12 @@ int main(void)
             }
             printf("-");
             bin(a2, kd, k1);
+            printf("\n");
+        }
+        if (a0 == 0)
+        {
+            printf("0000000000");
+            printf("\n");
         }
     }
 }
