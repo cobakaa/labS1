@@ -8,7 +8,7 @@ float ret(float eps)
 	return eps;
 }
 
-void print_table_top()
+void print_table_top(void)
 {
     char c1[] = "X";
 	char c2[] = "Teylor sum";
@@ -66,7 +66,7 @@ void print_table_str(float x, float res_function, float res_teylor, int n)
 	}
 }
 
-void print_table_bot()
+void print_table_bot(void)
 {
     printf("┗");
 	for (int i = 0; i < 10; i++) printf("━");
@@ -100,13 +100,18 @@ int nums(int x)
 	return res;
 }
 
-int main(void)
+float epsilon(void)
 {
 	float eps = 1;
-	while (ret(eps/2 + 1) > 1)
-	{
+	while (ret(eps/2 + 1) > 1) {
 		eps /= 2;
 	}
+	return eps;
+}
+
+int main(void)
+{
+	float eps = epsilon();
 
 	int steps;
 	const float a = -0.2, b = 0.3;
