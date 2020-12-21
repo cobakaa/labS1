@@ -3,11 +3,6 @@
 
 const float k = 1;
 
-float ret(float eps) 
-{
-	return eps;
-}
-
 void print_table_top(void)
 {
     char c1[] = "X";
@@ -103,7 +98,7 @@ int nums(int x)
 float epsilon(void)
 {
 	float eps = 1;
-	while (ret(eps/2 + 1) > 1) {
+	while (eps / 2 + 1 > 1) {
 		eps /= 2;
 	}
 	return eps;

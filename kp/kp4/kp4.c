@@ -3,15 +3,10 @@
 
 const float k = 10;
 
-float ret(float eps)
-{
-	return eps;
-}
-
-float eps()
+float epsilon()
 {
 	float eps = 1;
-	while (ret(eps/2 + 1) > 1) eps /= 2;
+	while (eps/2 + 1 > 1) eps /= 2;
 	return eps;
 }
 
@@ -27,10 +22,11 @@ float f4(float x)
 
 float dichotomy(float a, float b, float (*f)(float))
 {
+    float eps = epsilon();
 	do {
 		if (f(a) * f((a + b) / 2) > 0) a = (a + b) / 2;
 		if (f(b) * f((a + b) / 2) > 0) b = (a + b) / 2;
-	} while (fabsf(a - b) > k * eps());
+	} while (fabsf(a - b) > k * eps);
 	return (a + b) / 2;
 }
 
@@ -47,10 +43,11 @@ float fx4(float x)
 float iteration(float a, float b, float (*f)(float))
 {
 	float x1, x = (a + b) / 2;
+    float eps = epsilon();
 	do {
 		x1 = x;
 		x = f(x1);
-	} while (fabsf(x - x1) > k * eps());
+	} while (fabsf(x - x1) > k * eps);
 	return x;
 }
 
@@ -62,10 +59,11 @@ float lim(float x, float (*f)(float))
 float newton(float a, float b, float (*f)(float))
 {
 	float x1, x = (a + b) / 2;
+    float eps = epsilon();
 	do {
 		x1 = x;
 		x = x1 - f(x1) / lim(x1, f);
-	} while(fabsf(x - x1) > k * eps());
+	} while(fabsf(x - x1) > k * eps);
 	return x;
 }
 
@@ -184,6 +182,8 @@ int main(void)
 
     const float a3 = 1, b3 = 1.5;
     const float a4 = 1, b4 = 3;
+
+    //printf("Machine epsilon for type float in system = %0.9f\n", epsilon());
 
     print_table_top();
 
