@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <math.h>
 
-const float k = 1;
-
 void print_table_top(void)
 {
     char c1[] = "X";
@@ -81,8 +79,9 @@ float f(float x)
 
 float m_round(float x, int n)
 {
-	float res = roundf(x * n) / n;
-	return (res == -0.0) ? 0.0 : res;
+	n = pow(10, n);
+	float res = roundf(x * n) / n; 
+	return (res == -0.0f) ? 0.0 : res;
 }
 
 int nums(int x)
@@ -97,9 +96,9 @@ int nums(int x)
 
 float epsilon(void)
 {
-	float eps = 1;
-	while (eps / 2 + 1 > 1) {
-		eps /= 2;
+	float eps = 1.0f;
+	while (eps / 2.0f + 1.0f > 1.0f) {
+		eps /= 2.0f;
 	}
 	return eps;
 }
@@ -109,13 +108,15 @@ int main(void)
 	float eps = epsilon();
 
 	int steps;
+	float k;
 	const float a = -0.2, b = 0.3;
 
 	printf("Machine epsilon for type float in system = %0.9f\n", eps);
-	printf("Enter number of steps: ");
-	scanf("%d", &steps);
+	printf("Enter number of steps and parameter k: ");
+	scanf("%d %f", &steps, &k);
+	printf("k = %g", k);
 	printf("\n");
-	printf("Table of values ​​for the Taylor series and standard function f(x) = ln(1 + x - 2x²)\n");
+	printf("Table of values for the Taylor series and standard function f(x) = ln(1 + x - 2x^2)\n");
 
 	float delta = (b - a) / steps;
 	int n = 0;
@@ -132,7 +133,7 @@ int main(void)
             float bin_degree = 2, xnew = x;
             ++n;
 
-            for (int i = 1; i < n; ++i) {
+            for (int j = 1; j < n; ++j) {
                 xnew *= x;
 				bin_degree *= 2;
             }
@@ -141,11 +142,11 @@ int main(void)
 			summand = ((bin_degree - 1) / n) * xnew;
             res_teylor += summand;
 
-	    } while ((fabsf(summand) > eps * k) && (n < 100));
+	    } while ((fabsf(res_function - res_teylor) > eps * k) && (n < 100));
 	  
         print_table_str(x, res_function, res_teylor, n);
 
-	    x = m_round(a + delta * (i + 1), pow(10, nums(steps) + 1));
+	    x = m_round(a + delta * (i + 1), nums(steps) + 1);
 	    n = 0;
 	    res_teylor = 0;
 	}
